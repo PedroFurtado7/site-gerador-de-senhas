@@ -21,23 +21,30 @@ function generatePassword() {
     pass += charset.charAt(Math.floor(Math.random() * n));
   }
 
-  console.log(pass)
+  console.log(pass);
   containerPassword.classList.remove("hide");
   password.innerHTML = pass;
   novaSenha = pass;
-  hidePasswordAfterDelay();
 }
 
 function copyPassword() {
-  alert("Senha copiada com sucesso!")
+  alert("Senha copiada com sucesso!");
   navigator.clipboard.writeText(novaSenha);
 }
 
-function hidePasswordAfterDelay() {
-  setTimeout(function() {
-    containerPassword.classList.add("hide");
-    password.innerHTML = '';
-    novaSenha = '';
-  }, 5000); // Esconder a senha depois de 5 segundos (5000 milissegundos)
+function togglePasswordVisibility() {
+  let passwordField = document.querySelector("#password");
+  let tooltip = document.querySelector(".tooltip");
+  let isPasswordVisible = passwordField.getAttribute("type") === "text";
+
+  if (isPasswordVisible) {
+    passwordField.setAttribute("type", "password");
+    tooltip.innerHTML = "Clique na senha para mostrar. 👆";
+  } else {
+    passwordField.setAttribute("type", "text");
+    tooltip.innerHTML = "Clique na senha para ocultar. 👆";
+  }
 }
 
+// Adicionar evento de clique no campo de senha para alternar a visibilidade
+password.addEventListener("click", togglePasswordVisibility);
