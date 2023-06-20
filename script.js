@@ -1,48 +1,48 @@
 let sliderElement = document.querySelector("#slider");
 let buttonElement = document.querySelector("#button");
-let passwordElement = document.querySelector("#password");
-let copyButton = document.querySelector("#copy-button");
-let showPasswordButton = document.querySelector("#show-password-button");
+let showPasswordElement = document.querySelector("#showPassword");
+
+let sizePassword = document.querySelector("#valor");
+let password = document.querySelector("#password");
+
+let containerPassword = document.querySelector("#container-password");
 
 let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!';
 let novaSenha = '';
 
+sizePassword.innerHTML = sliderElement.value;
+
 sliderElement.oninput = function() {
-  let sizePassword = document.querySelector("#valor");
   sizePassword.innerHTML = this.value;
 }
 
-function generatePassword() {
+function generatePassword(){
   let pass = '';
-  for (let i = 0, n = charset.length; i < sliderElement.value; ++i) {
+  for(let i = 0, n = charset.length; i < sliderElement.value; ++i){
     pass += charset.charAt(Math.floor(Math.random() * n));
   }
 
-  console.log(pass);
+  console.log(pass)
+  containerPassword.classList.remove("hide");
+  password.innerHTML = pass;
   novaSenha = pass;
-  passwordElement.value = pass;
-  showPasswordButton.style.display = "inline-block";
-  copyButton.style.display = "inline-block";
 }
 
-function copyPassword() {
-  navigator.clipboard.writeText(novaSenha).then(function() {
-    alert("Senha copiada com sucesso!");
-  }).catch(function() {
-    alert("Não foi possível copiar a senha.");
-  });
+function copyPassword(){
+  alert("Senha copiada com sucesso!")
+  navigator.clipboard.writeText(novaSenha);
 }
 
 function togglePasswordVisibility() {
-  if (passwordElement.type === "password") {
-    passwordElement.type = "text";
-    showPasswordButton.innerHTML = "Ocultar senha";
+  let passwordInputType = password.getAttribute("type");
+  if (passwordInputType === "password") {
+    password.setAttribute("type", "text");
+    showPasswordElement.classList.remove("hide-password");
   } else {
-    passwordElement.type = "password";
-    showPasswordButton.innerHTML = "Mostrar senha";
+    password.setAttribute("type", "password");
+    showPasswordElement.classList.add("hide-password");
   }
 }
 
-showPasswordButton.addEventListener("click", togglePasswordVisibility);
 
 
