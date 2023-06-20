@@ -24,7 +24,7 @@ function generatePassword(){
 
   console.log(pass)
   containerPassword.classList.remove("hide");
-  password.innerHTML = pass;
+  password.value = pass;
   novaSenha = pass;
 }
 
@@ -37,12 +37,11 @@ function togglePasswordVisibility() {
   let passwordInputType = password.getAttribute("type");
   if (passwordInputType === "password") {
     password.setAttribute("type", "text");
-    showPasswordElement.classList.remove("hide-password");
+    showPasswordElement.classList.add("hide-password");
   } else {
     password.setAttribute("type", "password");
-    showPasswordElement.classList.add("hide-password");
+    showPasswordElement.classList.remove("hide-password");
   }
 }
-
 
 
