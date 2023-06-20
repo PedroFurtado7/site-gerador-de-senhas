@@ -29,8 +29,14 @@ function generatePassword() {
 }
 
 function copyPassword() {
-  alert("Senha copiada com sucesso!");
-  navigator.clipboard.writeText(novaSenha);
+  let passwordField = document.querySelector("#password");
+  let tooltip = document.querySelector(".tooltip");
+
+  navigator.clipboard.writeText(novaSenha).then(function() {
+    alert("Senha copiada com sucesso!");
+  }).catch(function() {
+    alert("Não foi possível copiar a senha.");
+  });
 }
 
 function togglePasswordVisibility() {
