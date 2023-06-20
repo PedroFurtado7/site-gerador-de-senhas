@@ -23,7 +23,8 @@ function generatePassword() {
 
   console.log(pass);
   containerPassword.classList.remove("hide");
-  password.innerHTML = pass;
+  password.value = pass; // Altera o valor do campo de senha
+
   novaSenha = pass;
 }
 
@@ -34,17 +35,21 @@ function copyPassword() {
 
 function togglePasswordVisibility() {
   let passwordField = document.querySelector("#password");
-  let tooltip = document.querySelector(".tooltip");
-  let isPasswordVisible = passwordField.getAttribute("type") === "text";
+  let passwordVisibilityButton = document.querySelector("#password-visibility");
 
-  if (isPasswordVisible) {
-    passwordField.setAttribute("type", "password");
-    tooltip.innerHTML = "Clique na senha para mostrar. 👆";
-  } else {
+  if (passwordField.getAttribute("type") === "password") {
     passwordField.setAttribute("type", "text");
-    tooltip.innerHTML = "Clique na senha para ocultar. 👆";
+    passwordVisibilityButton.innerHTML = "Ocultar senha"; // Altera o texto do botão para "Ocultar senha"
+  } else {
+    passwordField.setAttribute("type", "password");
+    passwordVisibilityButton.innerHTML = "Mostrar senha"; // Altera o texto do botão para "Mostrar senha"
   }
 }
 
-// Adicionar evento de clique no campo de senha para alternar a visibilidade
-password.addEventListener("click", togglePasswordVisibility);
+// Adicionar evento de clique no botão de ocultar/mostrar senha
+let passwordVisibilityButton = document.createElement("button");
+passwordVisibilityButton.id = "password-visibility";
+passwordVisibilityButton.innerHTML = "Mostrar senha"; // Define o texto inicial do botão como "Mostrar senha"
+passwordVisibilityButton.onclick = togglePasswordVisibility;
+
+containerPassword.appendChild(passwordVisibilityButton);
