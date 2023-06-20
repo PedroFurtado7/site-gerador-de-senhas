@@ -1,17 +1,14 @@
 let sliderElement = document.querySelector("#slider");
 let buttonElement = document.querySelector("#button");
-
-let sizePassword = document.querySelector("#valor");
-let password = document.querySelector("#password");
-
-let containerPassword = document.querySelector("#container-password");
+let passwordElement = document.querySelector("#password");
+let copyButton = document.querySelector("#copy-button");
+let showPasswordButton = document.querySelector("#show-password-button");
 
 let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!';
 let novaSenha = '';
 
-sizePassword.innerHTML = sliderElement.value;
-
 sliderElement.oninput = function() {
+  let sizePassword = document.querySelector("#valor");
   sizePassword.innerHTML = this.value;
 }
 
@@ -22,16 +19,13 @@ function generatePassword() {
   }
 
   console.log(pass);
-  containerPassword.classList.remove("hide");
-  password.innerHTML = pass;
-  password.classList.remove("hide-asterisks"); // Removendo a classe para exibir a senha sem asteriscos
   novaSenha = pass;
+  passwordElement.innerHTML = pass;
+  showPasswordButton.style.display = "inline-block";
+  copyButton.style.display = "inline-block";
 }
 
 function copyPassword() {
-  let passwordField = document.querySelector("#password");
-  let tooltip = document.querySelector(".tooltip");
-
   navigator.clipboard.writeText(novaSenha).then(function() {
     alert("Senha copiada com sucesso!");
   }).catch(function() {
@@ -40,19 +34,14 @@ function copyPassword() {
 }
 
 function togglePasswordVisibility() {
-  let passwordField = document.querySelector("#password");
-  let tooltip = document.querySelector(".tooltip");
-  let isPasswordVisible = passwordField.classList.contains("show");
-
-  if (isPasswordVisible) {
-    passwordField.classList.remove("show");
-    tooltip.innerHTML = "Clique na senha para mostrar. 👆";
+  if (passwordElement.type === "password") {
+    passwordElement.type = "text";
+    showPasswordButton.innerHTML = "Ocultar senha";
   } else {
-    passwordField.classList.add("show");
-    tooltip.innerHTML = "Clique na senha para ocultar. 👆";
+    passwordElement.type = "password";
+    showPasswordButton.innerHTML = "Mostrar senha";
   }
 }
 
-// Adicionar evento de clique no campo de senha para alternar a visibilidade
-password.addEventListener("click", togglePasswordVisibility);
+showPasswordButton.addEventListener("click", togglePasswordVisibility);
 
