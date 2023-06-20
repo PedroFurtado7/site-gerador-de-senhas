@@ -15,9 +15,9 @@ sliderElement.oninput = function() {
   sizePassword.innerHTML = this.value;
 }
 
-function generatePassword(){
+function generatePassword() {
   let pass = '';
-  for(let i = 0, n = charset.length; i < sliderElement.value; ++i){
+  for (let i = 0, n = charset.length; i < sliderElement.value; ++i) {
     pass += charset.charAt(Math.floor(Math.random() * n));
   }
 
@@ -25,46 +25,19 @@ function generatePassword(){
   containerPassword.classList.remove("hide");
   password.innerHTML = pass;
   novaSenha = pass;
+  hidePasswordAfterDelay();
 }
 
-function copyPassword(){
+function copyPassword() {
   alert("Senha copiada com sucesso!")
   navigator.clipboard.writeText(novaSenha);
 }
 
-function togglePasswordVisibility() {
-  var passwordElement = document.getElementById("password");
-  var toggleButton = document.getElementById("toggle-button");
-
-  if (passwordElement.classList.contains("hide")) {
-    passwordElement.classList.remove("hide");
-    toggleButton.textContent = "Ocultar senha";
-  } else {
-    passwordElement.classList.add("hide");
-    toggleButton.textContent = "Mostrar senha";
-  }
+function hidePasswordAfterDelay() {
+  setTimeout(function() {
+    containerPassword.classList.add("hide");
+    password.innerHTML = '';
+    novaSenha = '';
+  }, 5000); // Esconder a senha depois de 5 segundos (5000 milissegundos)
 }
 
-  console.log(pass)
-  containerPassword.classList.remove("hide");
-  password.innerHTML = pass;
-  novaSenha = pass;
-}
-
-function copyPassword(){
-  alert("Senha copiada com sucesso!")
-  navigator.clipboard.writeText(novaSenha);
-}
-
-function togglePasswordVisibility() {
-  var passwordElement = document.getElementById("password");
-  var toggleButton = document.getElementById("toggle-button");
-
-  if (passwordElement.type === "password") {
-    passwordElement.type = "text";
-    toggleButton.textContent = "Ocultar senha";
-  } else {
-    passwordElement.type = "password";
-    toggleButton.textContent = "Mostrar senha";
-  }
-}
