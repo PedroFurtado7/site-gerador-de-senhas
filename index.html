@@ -21,16 +21,17 @@
 
   <div id="container-password" class="container-password hide">
     <span class="title">Sua senha gerada foi:</span>
-    <input id="password" class="password" type="password" readonly>
-    <div class="button-container">
-      <button id="show-password-button" class="button-cta password-visibility">Mostrar senha</button>
-      <button id="copy-button" class="button-cta" onclick="copyPassword()">Copiar senha</button>
+    <div>
+      <span id="password" class="password"></span>
+      <span id="showPassword" class="show-password" onclick="togglePasswordVisibility()"></span>
     </div>
     <span class="tooltip">Clique na senha para copiar. 👆</span>
   </div>
 
   <script src="script.js"></script>
 </body>
+</html>
+
 </html>
 
 
