@@ -43,12 +43,12 @@ body{
 
 .button-cta{
   height: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
   background-color: #2469E0;
   border: 0;
   border-radius: 4px;
   color: #FFF;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -124,5 +124,6 @@ body{
   padding: 8px 16px;
   cursor: pointer;
 }
+
 
 
