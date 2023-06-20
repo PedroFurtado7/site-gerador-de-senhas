@@ -43,12 +43,12 @@ body{
 
 .button-cta{
   height: 40px;
-  margin-top: 20px;
+  margin-top: 40px;
   background-color: #2469E0;
   border: 0;
   border-radius: 4px;
   color: #FFF;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -92,6 +92,21 @@ body{
   display: none;
 }
 
+.show-password {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("eye-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.hide-password {
+  background-image: url("eye-slash-icon.png");
+}
+
 .tooltip{
   color: #FFF;
   position: relative;
@@ -110,19 +125,6 @@ body{
   bottom: 50px;
   visibility: visible;
   opacity: 1;
-}
-
-.password-visibility {
-  display: none;
-  margin-top: 10px;
-  background-color: #2469E0;
-  border: 0;
-  border-radius: 4px;
-  color: #FFF;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 
 
