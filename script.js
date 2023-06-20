@@ -20,7 +20,7 @@ function generatePassword() {
 
   console.log(pass);
   novaSenha = pass;
-  passwordElement.innerHTML = pass;
+  passwordElement.value = pass;
   showPasswordButton.style.display = "inline-block";
   copyButton.style.display = "inline-block";
 }
@@ -44,4 +44,5 @@ function togglePasswordVisibility() {
 }
 
 showPasswordButton.addEventListener("click", togglePasswordVisibility);
+
 
