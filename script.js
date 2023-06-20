@@ -36,6 +36,30 @@ function togglePasswordVisibility() {
   var passwordElement = document.getElementById("password");
   var toggleButton = document.getElementById("toggle-button");
 
+  if (passwordElement.classList.contains("hide")) {
+    passwordElement.classList.remove("hide");
+    toggleButton.textContent = "Ocultar senha";
+  } else {
+    passwordElement.classList.add("hide");
+    toggleButton.textContent = "Mostrar senha";
+  }
+}
+
+  console.log(pass)
+  containerPassword.classList.remove("hide");
+  password.innerHTML = pass;
+  novaSenha = pass;
+}
+
+function copyPassword(){
+  alert("Senha copiada com sucesso!")
+  navigator.clipboard.writeText(novaSenha);
+}
+
+function togglePasswordVisibility() {
+  var passwordElement = document.getElementById("password");
+  var toggleButton = document.getElementById("toggle-button");
+
   if (passwordElement.type === "password") {
     passwordElement.type = "text";
     toggleButton.textContent = "Ocultar senha";
