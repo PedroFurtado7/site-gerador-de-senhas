@@ -112,16 +112,24 @@ body{
   opacity: 1;
 }
 
-.toggle-button {
+.password-visibility {
   margin-top: 8px;
-  background-color: #2469E0;
-  border: 0;
-  border-radius: 4px;
+  background-color: transparent;
+  border: none;
   color: #FFF;
   font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
-  padding: 8px 16px;
-  width: 100%;
-  max-width: 480px;
 }
+
+.password-visibility:hover {
+  text-decoration: underline;
+}
+
+.hide-asterisks {
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
